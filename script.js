@@ -1,5 +1,6 @@
+const ropeLengths = document.getElementById("rope-lengths");
 function calculateMinCost() {
-   const ropes = ropeLengths.split(',').map(Number);
+   const ropes = ropeLengths.value.split(',').map(Number);
 	
 	const priorityQueue = [];
 	ropes.forEach(length => priorityQueue.push(length));
