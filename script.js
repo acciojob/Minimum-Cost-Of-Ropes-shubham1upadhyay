@@ -1,17 +1,17 @@
 function calculateMinCost() {
-      const input = document.getElementById("ropesInput").value;
-      const ropes = input.split(",").map(Number);
-
-      let totalCost = 0;
-
-      while (ropes.length > 1) {
-        ropes.sort((a, b) => a - b);
-        const cost = ropes[0] + ropes[1];
-        totalCost += cost;
-
-        ropes.splice(0, 2);
-        ropes.push(cost);
-      }
-
-      document.getElementById("result").innerHTML = totalCost;
-    }
+   const ropes = ropeLengths.split(',').map(Number);
+	
+	const priorityQueue = [];
+	ropes.forEach(length => priorityQueue.push(length));
+	
+	let totalCost = 0;
+	while(priorityQueue.length > 1){
+		const smallest1 = priorityQueue.shift();
+		const smallest2 = priorityQueue.shift();
+		const cost = smallest1 + smallest2;
+		totalCost += cost;
+		priorityQueue.push(cost);
+		priorityQueue.sort((a, b) => a - b);
+	}
+	document.getElementById("result").innerHTML = totalCost;
+} 
